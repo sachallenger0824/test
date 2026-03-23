@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About ACSEL | ACSEL 2026</title>
+    <meta name="description" content="Learn about ACSEL - The Asian Conference on Safety & Education in Laboratory">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* About Page Specific Styles */
+        .about-section {
+            padding: 5rem 0;
+        }
+
+        .about-intro {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .about-intro h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-intro p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--surface-color);
+            padding: 2.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-color);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            color: var(--text-main);
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--secondary-color);
+            padding: 4rem 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+
+        /* History Timeline */
+        .history-section {
+            padding: 5rem 0;
+            background: var(--bg-color);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: calc(50% + 30px);
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: calc(50% + 30px);
+        }
+
+        .timeline-content {
+            background: var(--surface-color);
+            padding: 1.5rem 2rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            max-width: 350px;
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 20px;
+            width: 16px;
+            height: 16px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 3px solid var(--surface-color);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: auto;
+            left: -8px;
+        }
+
+        .timeline-year {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Committee Section */
+        .committee-section {
+            padding: 5rem 0;
+        }
+
+        .committee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .committee-card {
+            background: var(--surface-color);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .committee-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .committee-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .committee-card h4 {
+            color: var(--text-main);
+            margin-bottom: 0.3rem;
+        }
+
+        .committee-card .role {
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .committee-card .affiliation {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                padding-left: 60px;
+                padding-right: 0;
+                justify-content: flex-start;
+            }
+
+            .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -38px;
+                right: auto;
+            }
+
+            .about-intro h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="logo">ACSEL<span>2026</span></a>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html" class="active">About ACSEL</a></li>
+                <li><a href="index.html">Conference Programme</a></li>
+                <li><a href="#">Our Speakers</a></li>
+                <li><a href="travel.html">Travel Information</a></li>
+                <li><a href="sponsorship.html">Sponsorship</a></li>
+                <li><a href="#">Submit Your Paper</a></li>
+            </ul>
+            <a href="register.html" class="btn btn-primary nav-btn">Register Now</a>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>About ACSEL</h1>
+            <p>The 13th Asian Conference on Safety & Education in Laboratory — Promoting laboratory safety culture and environmental health across Asia.</p>
+        </div>
+    </header>
+
+    <!-- About Introduction -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-intro">
+                <h2>What is ACSEL?</h2>
+                <p>The <strong>Asian Conference on Safety & Education in Laboratory (ACSEL)</strong> is an annual conference organised by leading universities in Asia. It provides a platform for scientists, engineers, researchers, and professionals to discuss the management and education of environmental health and safety.</p>
+                <p style="margin-top: 1.5rem;"><em>"Security by yourselves and consideration of environment"</em> are the duty of all members in universities and research institutes.</p>
+                <p style="margin-top: 1.5rem;">We understand the ongoing challenges in enhancing environmental safety and ensuring regulatory compliance, all while supporting the dynamic nature of research activities. Additionally, it is our duty to educate both staff and students to be knowledgeable in environmental health and safety, and grounded in ethical responsibility.</p>
+                <p style="margin-top: 1.5rem; font-weight: 600; color: var(--primary-color);">We are pleased to announce that ACSEL 2026 will be held in Taiwan from 19-20 November 2026.</p>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3>Laboratory Safety</h3>
+                    <p>Explore best practices in laboratory safety management, risk assessment, and hazard prevention to create safer research environments.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3>Safety Education</h3>
+                    <p>Share innovative approaches to educating staff and students about environmental health and safety, fostering a culture of responsibility.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3>Environmental Health</h3>
+                    <p>Discuss environmental protection measures, sustainable laboratory practices, and compliance with environmental regulations.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3>Knowledge Exchange</h3>
+                    <p>Connect with professionals from leading Asian universities and research institutes to share experiences and build collaborative networks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Committees -->
+    <section class="committee-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Committees</h2>
+                <p>ACSEL 2026 is supported by three dedicated committees.</p>
+            </div>
+
+            <div class="committee-grid">
+                <div class="committee-card">
+                    <div class="committee-avatar">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 36px; height: 36px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h4>Advisory Committee</h4>
+                    <p class="role">Strategic Guidance</p>
+                    <p class="affiliation">Provides strategic direction and ensures the conference aligns with the broader goals of laboratory safety education in Asia.</p>
+                </div>
+
+                <div class="committee-card">
+                    <div class="committee-avatar">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 36px; height: 36px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h4>International Steering Committee</h4>
+                    <p class="role">Global Coordination</p>
+                    <p class="affiliation">Coordinates with international partners and ensures diverse representation from universities across Asia and beyond.</p>
+                </div>
+
+                <div class="committee-card">
+                    <div class="committee-avatar">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 36px; height: 36px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h4>Local Organising Committee</h4>
+                    <p class="role">Event Management</p>
+                    <p class="affiliation">Handles all local arrangements including venue, logistics, accommodation, and on-site coordination in Taiwan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Call to Action -->
+    <section class="cta-section" id="register">
+        <div class="cta-container">
+            <h2>Be Part of ACSEL 2026</h2>
+            <p>Join researchers and professionals at Asia's premier conference on laboratory safety and education. 19-20 November 2026, Taiwan.</p>
+            <div class="cta-buttons">
+                <a href="register.html" class="btn btn-primary btn-large">Register Now</a>
+                <a href="index.html#programme" class="btn btn-outline btn-large">View Programme</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>ACSEL<span>2026</span></h2>
+                <p>The Asian Conference on Safety & Education in Laboratory.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="about.html">About Us</a>
+                <a href="#">Speakers</a>
+                <a href="index.html#programme">Programme</a>
+                <a href="travel.html">Travel</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ACSEL Conference. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

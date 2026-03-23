@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsorship | ACSEL 2026</title>
+    <meta name="description" content="Become a sponsor of ACSEL 2026 - The Asian Conference on Safety & Education in Laboratory. 19-20 November 2026, Taiwan.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Sponsorship Page Specific Styles */
+        .sponsor-section {
+            padding: 5rem 0;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-intro h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-intro p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Sponsor Tiers Grid */
+        .sponsor-tiers {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        .tier-card {
+            background: var(--surface-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tier-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .tier-header {
+            padding: 1.5rem;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .tier-card.diamond-plus .tier-header {
+            background: linear-gradient(135deg, #1a1a2e, #4a4a6a);
+        }
+
+        .tier-card.diamond .tier-header {
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+        }
+
+        .tier-card.platinum .tier-header {
+            background: linear-gradient(135deg, #536976, #8e9eab);
+        }
+
+        .tier-card.gold .tier-header {
+            background: linear-gradient(135deg, #b8860b, #ffd700);
+        }
+
+        .tier-card.pearl .tier-header {
+            background: linear-gradient(135deg, #8b7d7b, #c4aead);
+        }
+
+        .tier-header h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .tier-header .price {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .tier-header .price span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .tier-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tier-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex: 1;
+        }
+
+        .tier-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px dashed var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .tier-features li:last-child {
+            border-bottom: none;
+        }
+
+        .tier-features li svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .tier-features li svg.check {
+            color: #2A9D8F;
+        }
+
+        .tier-features li svg.cross {
+            color: #ccc;
+        }
+
+        .tier-features li .feature-detail {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: block;
+            margin-top: 0.25rem;
+        }
+
+        .tier-cta {
+            margin-top: 1rem;
+        }
+
+        .tier-cta .btn {
+            width: 100%;
+            font-size: 0.9rem;
+            padding: 0.7rem 1rem;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            background: var(--bg-color);
+            padding: 5rem 0;
+        }
+
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 0 -1rem;
+            padding: 0 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--surface-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            min-width: 900px;
+        }
+
+        .comparison-table thead {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .comparison-table th {
+            padding: 1.2rem 1rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table th:first-child {
+            text-align: left;
+            width: 25%;
+        }
+
+        .comparison-table th.diamond-plus {
+            background: linear-gradient(135deg, #1a1a2e, #4a4a6a);
+        }
+
+        .comparison-table th.diamond {
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+        }
+
+        .comparison-table th.platinum {
+            background: linear-gradient(135deg, #536976, #8e9eab);
+        }
+
+        .comparison-table th.gold {
+            background: linear-gradient(135deg, #b8860b, #ffd700);
+            color: #333;
+        }
+
+        .comparison-table th.pearl {
+            background: linear-gradient(135deg, #8b7d7b, #c4aead);
+        }
+
+        .comparison-table tbody tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: rgba(69, 123, 157, 0.05);
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            vertical-align: middle;
+        }
+
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .comparison-table .check-icon {
+            color: #2A9D8F;
+            font-size: 1.2rem;
+        }
+
+        .comparison-table .cross-icon {
+            color: #ccc;
+            font-size: 1rem;
+        }
+
+        .comparison-table .price-row td {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+
+        .comparison-table .note {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: block;
+            margin-top: 0.25rem;
+        }
+
+        /* Legend */
+        .table-legend {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(69, 123, 157, 0.1);
+            border-radius: var(--radius-md);
+        }
+
+        .table-legend p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0.25rem 0;
+        }
+
+        .table-legend strong {
+            color: var(--text-main);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 5rem 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: var(--surface-color);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            margin-bottom: 0.75rem;
+        }
+
+        .benefit-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--secondary-color);
+            padding: 5rem 0;
+            color: white;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .contact-item svg {
+            width: 24px;
+            height: 24px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-item a {
+            color: white;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .sponsor-tiers {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sponsor-tiers {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .section-intro h2 {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="logo">ACSEL<span>2026</span></a>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About ACSEL</a></li>
+                <li><a href="index.html">Conference Programme</a></li>
+                <li><a href="#">Our Speakers</a></li>
+                <li><a href="travel.html">Travel Information</a></li>
+                <li><a href="sponsorship.html" class="active">Sponsorship</a></li>
+                <li><a href="#">Submit Your Paper</a></li>
+            </ul>
+            <a href="register.html" class="btn btn-primary nav-btn">Register Now</a>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Sponsorship Opportunities</h1>
+            <p>Partner with ACSEL 2026 and showcase your commitment to laboratory safety and education in Asia.</p>
+        </div>
+    </header>
+
+    <!-- Comparison Table -->
+    <section class="comparison-section" style="padding-top: 5rem;">
+        <div class="container">
+            <div class="section-intro">
+                <h2>Sponsorship Packages</h2>
+                <p>Choose from our range of sponsorship packages designed to maximize your visibility and engagement with leading researchers, academics, and professionals in laboratory safety and environmental health.</p>
+            </div>
+
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Benefits</th>
+                            <th class="diamond-plus">Diamond Plus</th>
+                            <th class="diamond">Diamond</th>
+                            <th class="platinum">Platinum</th>
+                            <th class="gold">Gold</th>
+                            <th class="pearl">Pearl</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="price-row">
+                            <td>Price</td>
+                            <td>200,000 TWD</td>
+                            <td>100,000 TWD</td>
+                            <td>60,000 TWD</td>
+                            <td>20,000 TWD</td>
+                            <td>10,000 TWD</td>
+                        </tr>
+                        <tr>
+                            <td>Acknowledgement on conference webpage</td>
+                            <td><span class="check-icon">✔</span><span class="note">*Premium</span></td>
+                            <td><span class="check-icon">✔</span><span class="note">*Premium</span></td>
+                            <td><span class="check-icon">✔</span><span class="note">**Standard</span></td>
+                            <td><span class="check-icon">✔</span><span class="note">***Basic</span></td>
+                            <td><span class="check-icon">✔</span></td>
+                        </tr>
+                        <tr>
+                            <td>Company logo display on conference bag</td>
+                            <td><span class="check-icon">✔</span><span class="note">*Premium size</span></td>
+                            <td><span class="check-icon">✔</span><span class="note">*Premium size</span></td>
+                            <td><span class="check-icon">✔</span><span class="note">**Standard size</span></td>
+                            <td><span class="check-icon">✔</span></td>
+                            <td><span class="cross-icon">—</span></td>
+                        </tr>
+                        <tr>
+                            <td>Poster exhibit</td>
+                            <td><span class="check-icon">✔</span></td>
+                            <td><span class="check-icon">✔</span></td>
+                            <td><span class="check-icon">✔</span></td>
+                            <td><span class="check-icon">✔</span></td>
+                            <td><span class="check-icon">✔</span></td>
+                        </tr>
+                        <tr>
+                            <td>Tabletop exhibit</td>
+                            <td>3 spaces<span class="note">1.8m × 0.9m × 0.7m</span></td>
+                            <td>2 spaces<span class="note">1.8m × 0.9m × 0.7m</span></td>
+                            <td>2 spaces<span class="note">1.8m × 0.9m × 0.7m</span></td>
+                            <td>1 space<span class="note">1.2m × 0.6m × 0.7m</span></td>
+                            <td><span class="cross-icon">—</span></td>
+                        </tr>
+                        <tr>
+                            <td>Company leaflet in conference bag</td>
+                            <td><span class="check-icon">✔</span></td>
+                            <td><span class="check-icon">✔</span></td>
+                            <td><span class="check-icon">✔</span></td>
+                            <td><span class="cross-icon">—</span></td>
+                            <td><span class="cross-icon">—</span></td>
+                        </tr>
+                        <tr>
+                            <td>Free passes to ACSEL 2026</td>
+                            <td><strong>5</strong></td>
+                            <td><strong>4</strong></td>
+                            <td><strong>2</strong></td>
+                            <td><strong>1</strong></td>
+                            <td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Additional registrant(s) from same company</td>
+                            <td>2,000 TWD</td>
+                            <td>2,000 TWD</td>
+                            <td>2,000 TWD</td>
+                            <td>2,000 TWD</td>
+                            <td>General fee</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-legend">
+                <p><strong>*</strong> Premium placement/size — largest logo and top position on webpage and materials</p>
+                <p><strong>**</strong> Standard placement/size — medium logo and secondary position</p>
+                <p><strong>***</strong> Basic placement/size — standard logo in sponsor section</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Sponsor -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-intro">
+                <h2>Why Sponsor ACSEL 2026?</h2>
+                <p>Gain valuable exposure to a targeted audience of researchers, academics, and professionals in laboratory safety and environmental health.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3>Targeted Audience</h3>
+                    <p>Connect directly with decision-makers in laboratory safety, environmental health officers, researchers, and academic professionals from leading Asian universities.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3>Regional Reach</h3>
+                    <p>ACSEL attracts participants from across Asia and beyond, offering exposure to markets in Taiwan, Japan, Korea, China, Singapore, and other key regions.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                        </svg>
+                    </div>
+                    <h3>Brand Recognition</h3>
+                    <p>Associate your brand with excellence in laboratory safety and environmental responsibility. Demonstrate your commitment to advancing safety education.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                    </div>
+                    <h3>Networking Opportunities</h3>
+                    <p>Engage face-to-face with potential clients, partners, and collaborators during sessions, breaks, and the exhibition throughout the conference.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2>Become a Sponsor</h2>
+            <p>Interested in sponsoring ACSEL 2026? Contact our sponsorship team to discuss how we can tailor a package to meet your needs.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    <a href="mailto:sponsorship@acsel2026.org">sponsorship@acsel2026.org</a>
+                </div>
+                <div class="contact-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    </svg>
+                    <a href="tel:+886228610511">+886-2-2861-0511</a>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="mailto:sponsorship@acsel2026.org" class="btn btn-primary btn-large">Contact Sponsorship Team</a>
+                <a href="about.html" class="btn btn-outline btn-large">Learn More About ACSEL</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>ACSEL<span>2026</span></h2>
+                <p>The Asian Conference on Safety & Education in Laboratory.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="about.html">About Us</a>
+                <a href="#">Speakers</a>
+                <a href="index.html#programme">Programme</a>
+                <a href="travel.html">Travel</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ACSEL Conference. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
